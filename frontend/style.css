@@ -1,0 +1,279 @@
+/* --- FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+/* --- VARIÁVEIS (PALETA LO-FI) --- */
+:root {
+    --bg-fundo: #f5f1e8;
+    --bg-papel: #fdfbf6;
+    --cor-texto: #3d352e;
+    --cor-principal: #4a5c5a;
+    --cor-acento: #c27c5c;
+    --cor-borda: #3d352e;
+}
+
+/* --- RESET / BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- TIPOGRAFIA / CABEÇALHO --- */
+header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px 0;
+    background: var(--cor-principal);
+    color: var(--bg-papel);
+    border-radius: 10px;
+    border: 3px solid var(--cor-borda);
+    box-shadow: 6px 6px 0px var(--cor-borda);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+h1 .icon-sprout {
+    vertical-align: -8px;
+    margin-right: 8px;
+    /* usa currentColor (herda var(--bg-papel)) */
+}
+
+header p {
+    font-size: 1.1em;
+    font-family: 'Inconsolata', monospace;
+    opacity: 0.9;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes fadeInPop {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+/* --- BARRA LATERAL: FILTROS --- */
+aside.filtros {
+    background: var(--bg-papel);
+    padding: 25px;
+    border-radius: 10px;
+    border: 3px solid var(--cor-borda);
+    box-shadow: 6px 6px 0px var(--cor-borda);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.filtro-section { margin-bottom: 25px; }
+
+.filtro-section h3 {
+    color: var(--cor-principal);
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+/* --- CONTROLE DE FORMULÁRIOS (INPUTS / SELECTS) --- */
+input[type="search"],
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid var(--cor-borda);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background: var(--bg-papel);
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
+}
+
+input[type="search"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cor-acento);
+    background: #fff;
+    box-shadow: 4px 4px 0px var(--cor-acento);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233d352e' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+/* --- BOTÕES --- */
+.btn-limpar {
+    width: 100%;
+    padding: 12px;
+    background: var(--cor-acento);
+    color: var(--bg-papel);
+    border: 3px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+    font-weight: 700;
+    margin-top: 20px;
+    box-shadow: 4px 4px 0px var(--cor-borda);
+}
+
+.btn-limpar:hover {
+    background: #d48a6a;
+    box-shadow: 6px 6px 0px var(--cor-borda);
+    transform: translate(-2px, -2px);
+}
+
+.btn-limpar:active {
+    background: #b06d4e;
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+/* --- CATÁLOGO / GRADE DE CARDS --- */
+main#catalogo-plantas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    align-content: start;
+}
+
+/* --- CARD --- */
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-papel);
+    border-radius: 10px;
+    border: 3px solid var(--cor-borda);
+    overflow: hidden;
+    box-shadow: 8px 8px 0px rgba(74, 92, 90, 0.4);
+    transition: all 0.2s ease-out;
+    animation: fadeInPop 0.4s ease-out forwards;
+}
+
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px rgba(74, 92, 90, 0.6);
+}
+
+/* Imagem do card */
+.card-img {
+    width: 100%;
+    height: 200px;
+    background: #e6e2d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--cor-borda);
+}
+
+/* Garante recorte e centralização da imagem */
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Remove brilho radial antigo se existia */
+.card-img::after { content: none; }
+
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-titulo {
+    color: var(--cor-texto);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.card-descricao {
+    color: var(--cor-texto);
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+/* --- TAGS / INFORMAÇÕES --- */
+.card-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.info-tag {
+    background: transparent;
+    color: var(--cor-principal);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 700;
+    border: 2px dashed var(--cor-principal);
+    font-family: 'Inconsolata', monospace;
+}
+
+.info-tag.tipo {
+    color: var(--cor-acento);
+    border-color: var(--cor-acento);
+}
+
+/* --- MENSAGEM "SEM RESULTADOS" --- */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--cor-principal);
+    font-size: 1.2em;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+    aside.filtros { position: static; box-shadow: 6px 6px 0px var(--cor-borda); }
+    header { box-shadow: 6px 6px 0px var(--cor-borda); }
+    header h1 { font-size: 2em; }
+    main#catalogo-plantas { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+}
+
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .container { gap: 15px; }
+    header { padding: 20px 10px; }
+    header h1 { font-size: 1.6em; }
+    header p { font-size: 0.9em; }
+    main#catalogo-plantas { grid-template-columns: 1fr; gap: 20px; }
+    .card, aside.filtros, header { box-shadow: 4px 4px 0px var(--cor-borda); }
+    .card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px rgba(74, 92, 90, 0.6);
+    }
+}

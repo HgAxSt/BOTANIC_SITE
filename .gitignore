@@ -1,0 +1,10 @@
+# Arquivo de segredos e chaves. NUNCA ENVIE ISSO!
+backend/.env
+
+# Pasta de dependências do Node.js.
+# (É desnecessária e tem milhares de arquivos)
+backend/node_modules/
+
+# Arquivos de sistema operacional (Opcional, mas bom)
+.DS_Store
+Thumbs.db
