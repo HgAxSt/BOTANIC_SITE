@@ -1,5 +1,6 @@
 # Arquivo de segredos e chaves. NUNCA ENVIE ISSO!
 backend/.env
+backend/explicacao.txt
 
 # Pasta de dependências do Node.js.
 # (É desnecessária e tem milhares de arquivos)
